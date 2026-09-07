@@ -14,4 +14,4 @@ Engineered and validated a SIEM detection rule targeting adversary use of PowerS
 * **Target Index Pattern**: `logs-*`
 * **KQL Query**:
   ```kql
-  winlog.event_id : "4104" AND *Mimikatz*
+  *Mimikatz*
