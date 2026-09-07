@@ -15,3 +15,13 @@ Engineered and validated a SIEM detection rule targeting adversary use of PowerS
 * **KQL Query**:
   ```kql
   *Mimikatz*
+
+
+
+## Threat Emulation & Validation
+1. **Emulation**: Executed Atomic Red Team test `T1059.001` via PowerShell as Administrator.
+2. **Telemetry Observations**: Identified that Microsoft Defender Antivirus intercepted `Invoke-Mimikatz.ps1` during execution, shipping threat telemetry via endpoint security alerts into `logs-*`.
+3. **Validation**: Updated detection query to account for field variations across Windows event channels and confirmed successful trigger (`Active Alerts: 1`) under Rule History.
+
+## Technical Key Takeaways
+* **Resilient Querying**: Security tools like Defender can block malware before standard PowerShell logs (Event ID 4104) are generated. Searching broadly across all incoming logs (`logs-*`) for threat keywords like `*Mimikatz*` ensures you catch the attack regardless of which log field or security control captures it.
